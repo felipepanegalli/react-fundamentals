@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [nome, setNome] = useState('');
+
+  const Combo = () => {
+    const opt = ['Fulano 1', 'Fulano 2', 'Fulano 3', 'Fulano 4'];
+    const cbOpt = opt.map((el) => <option>{el}</option>);
+    return <select>{cbOpt}</select>;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input
+        type="text"
+        value={nome}
+        onChange={(text) => setNome(text.target.value)}
+      />
+      <p>Hello {nome}</p>
+      <Combo />
     </div>
   );
 }
